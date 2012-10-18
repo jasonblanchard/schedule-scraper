@@ -29,7 +29,7 @@ class Program
     end
 
     def get_course_instructor(c)
-        c.css('td')[7].content
+        c.css('td').reverse[0].content
     end
 
     def get_course_type(c)
@@ -73,6 +73,4 @@ end
 p = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEDUC&sp=10")
 
 puts p.grab_courses
-
-puts ("\n")
 
