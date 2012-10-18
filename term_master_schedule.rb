@@ -52,8 +52,24 @@ class Program
     def is_course?(html, page)
         (html.css('td').length > 2) && (html.css('td')[0].content.match(/#{get_program(page)}/))
     end
+
+    def included_section?(course, section)
+        if section
+            get_course_section(course).match(/#{section}/)
+        else
+            get_course_section(course).match(/\d/)
+        end
+    end
+
+    def included_keyword?(course, keyword)
+        if keyword
+            get_course_title(course).match(/#{keyword}/i)
+        else
+            get_course_title(course).match(/./)
+        end
+    end
     
-    def grab_courses(section=nil, keyword=nil)
+    def grab_courses(section=false, keyword=false)
         page  = Nokogiri::HTML open( @url )
 
         course_list = page.css('table').css('tr')[3].css('td').css('tr')[6].css('tr')
@@ -69,7 +85,8 @@ class Program
         end
 
         raw_courses.each do |course|
-            @course_data << [create_course_name(course),
+            if included_section?(course, section) && included_keyword?(course, keyword)
+                @course_data << [create_course_name(course),
                              get_subject_code(course), 
                              get_course_number(course), 
                              get_course_section(course),
@@ -77,6 +94,7 @@ class Program
                              get_course_crn(course),
                              get_course_instructor(course),
                              get_course_title(course)]
+            end
         end
 
         @course_data
@@ -94,8 +112,10 @@ class Program
 
 end
 
+# Examples and tests
+
 all = []
 
 p = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=SG&sp=SCULA&sp=12")
 
-puts p.grab_courses.inspect
+puts p.grab_courses(false, "culinary").inspect
