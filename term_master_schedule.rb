@@ -1,6 +1,7 @@
 require 'net/https'
 require 'nokogiri'
 require 'open-uri'
+require 'simple_xlsx'
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
@@ -47,7 +48,7 @@ class Program
 
         program = get_program(page)
 
-        @course_data = Hash.new
+        @course_data = Array.new
 
         courses = Array.new
 
@@ -57,20 +58,40 @@ class Program
 
         courses.each do |course|
             course_name = "#{get_subject_code(course)}-#{get_course_number(course)}-#{get_course_sec(course)}"
+            @course_data << [course_name, 
+                             get_subject_code(course), 
+                             get_course_number(course), 
+                             get_course_type(course), 
+                             get_course_crn(course),
+                             get_course_instructor(course)]
+=begin
             @course_data[course_name] = {}
             @course_data[course_name]["Subject Code"] = get_subject_code(course)
             @course_data[course_name]["Course Number"] = get_course_number(course)
             @course_data[course_name]["Instr Type"] = get_course_type(course)
             @course_data[course_name]["CRN"] = get_course_crn(course)
             @course_data[course_name]["Instructor"] = get_course_instructor(course)
+=end
         end
 
         @course_data
     end
 
+    def create_sheet
+        SimpleXlsx::Serializer.new("test.xlsx") do |doc|
+            doc.add_sheet("course") do |sheet|
+                @course_data.each do |course|
+                    sheet.add_row(course)
+                end
+            end
+        end
+    end
+
 end
 
-p = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEDUC&sp=10")
+p = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=SG&sp=SCULA&sp=12")
 
-puts p.grab_courses
+p.grab_courses
+
+p.create_sheet
 
