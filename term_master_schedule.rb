@@ -62,13 +62,13 @@ class Program
 
         @course_data = Array.new
 
-        courses = Array.new
+        raw_courses = Array.new
 
         course_list.css('tr').each do |course|
-            courses << course if is_course?(course, page)
+            raw_courses << course if is_course?(course, page)
         end
 
-        courses.each do |course|
+        raw_courses.each do |course|
             @course_data << [create_course_name(course),
                              get_subject_code(course), 
                              get_course_number(course), 
