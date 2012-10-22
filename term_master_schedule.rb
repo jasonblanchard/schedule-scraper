@@ -125,27 +125,26 @@ class Spreadsheet
         end
     end
 
-    def self.hello(world)
-        puts "Hello" + world
-    end
 end
 
 # Examples and tests
 
+=begin
 all = []
 
-mted = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEDUC&sp=10")
+ct = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=SG&sp=SCT&sp=12")
 
-all << mted.grab_courses(69)
+all << ct.grab_courses(69)
 
-=begin
-et = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=SG&sp=SET&sp=12")
+edlt = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEDLT&sp=10")
 
-all << et.grab_courses
+all << edlt.grab_courses
 
-hrm = Poram.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=SG&sp=SHRM&sp=12")
+hrd = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEHRD&sp=10")
 
-all << hrm.grab_courses()
-=end
+all << hrd.grab_courses(69)
+
 
 Spreadsheet.create_sheet(all)
+
+=end
