@@ -15,7 +15,7 @@ post '/output' do
     params.each do |k,program|
         p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
         if p 
-            @courses << p.grab_courses
+            @courses << p.grab_courses(program["sections"],program["keyword"])
         end
     end
     @courses
