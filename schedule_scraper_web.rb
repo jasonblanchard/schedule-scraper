@@ -10,8 +10,16 @@ get '/output' do
 end
 
 post '/output' do
-    p = Program.new(params[:program_uri])
-    @courses = p.grab_courses(params[:sections],params[:keyword])
+    @courses = []
+
+    params.each do |k,program|
+        p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
+        if p 
+            @courses << p.grab_courses
+        end
+    end
+    @courses
+    #Spreadsheet.create_sheet(@courses)
     erb :output
 end
 
