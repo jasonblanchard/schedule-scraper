@@ -11,7 +11,7 @@ end
 
 post '/output' do
     p = Program.new(params[:program_uri])
-    @courses = p.grab_courses
+    @courses = p.grab_courses(params[:sections],params[:keyword])
     erb :output
 end
 

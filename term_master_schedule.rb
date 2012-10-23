@@ -54,22 +54,22 @@ class Program
     end
 
     def included_section?(course, section)
-        if section
-            get_course_section(course).match(/[#{section}]/)
-        else
+        if section.empty?
             get_course_section(course).match(/\d/)
+        else
+            get_course_section(course).match(/[#{section}]/)
         end
     end
 
     def included_keyword?(course, keyword)
-        if keyword
-            get_course_title(course).match(/#{keyword}/i)
-        else
+        if keyword.empty?
             get_course_title(course).match(/./)
+        else
+            get_course_title(course).match(/#{keyword}/i)
         end
     end
     
-    def grab_courses(section=false, keyword=false)
+    def grab_courses(section='', keyword='')
         page  = Nokogiri::HTML open( @url )
 
         course_list = page.css('table').css('tr')[3].css('td').css('tr')[6].css('tr')
