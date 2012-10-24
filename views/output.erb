@@ -1,1 +1,15 @@
-<%= @courses %>
+<span class="label label-info">Stats:</span>
+ <%= @total %> courses
+
+<table class="courses table table-striped table-bordered">
+    
+    <% @courses.each do |program| %>
+        <% program.each do |course| %>
+            <tr>
+                <% course.each do |data| %>
+                    <td><%= data %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+</table>

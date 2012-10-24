@@ -1,16 +1,13 @@
-<h2>Schedule Scraper</h2>
-
-
-<form action="output" method="post">
-    
-    <% 3.times do |n| %>
-        Enter a program:
-        Program Name: <input type="text" name="<%="program_#{n}"%>[program_name]">
-        Program URL: <input type="text" name="<%="program_#{n}"%>[program_uri]">
-        Add Section Filter: <input type="text" name="<%="program_#{n}"%>[sections]">
-        Add Keyword Filter: <input type="text" name="<%="program_#{n}"%>[keyword]">
+<p class="lead">Enter your programs:</p>
+<form action="output" method="post" class="form-inline">
+    <% 4.times do |n| %>
+        Program Name: <input type="text" class="input-small" placeholder="i.e. EDUC" name="<%="program_#{n}"%>[program_name]">
+        Program URL: <input type="text" placeholder="htt://duapp2.drexel.edu/..." name="<%="program_#{n}"%>[program_uri]">
+        Add Section Filter: <input type="text" class="input-small" placeholder="96" name="<%="program_#{n}"%>[sections]">
+        Add Keyword Filter: <input type="text" class="input-small" placeholder="i.e. math" name="<%="program_#{n}"%>[keyword]">
+        <hr>
         <br />
         <br />
     <% end %>
-    <input type="submit" class="btn">
+    <input type="submit" class="btn btn-primary">
 </form>

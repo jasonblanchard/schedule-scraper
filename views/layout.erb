@@ -1,11 +1,18 @@
 <html>
     <head>
         <link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
         <script href="css/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     </head>
     <body>
 
-        <%= yield %>
+        <div class="header">
+            <h1>Schedule Scraper</h1>
+        </div>
+
+        <div class="main-content">
+            <%= yield %>
+        </div>
 
     </body>
 </html>
