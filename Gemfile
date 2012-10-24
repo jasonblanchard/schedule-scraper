@@ -6,4 +6,6 @@ gem 'nokogiri'
 
 gem 'simple_xlsx_writer'
 
+gem 'sinatra-partial'
+
 

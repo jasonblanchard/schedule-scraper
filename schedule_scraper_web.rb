@@ -1,5 +1,8 @@
 require 'sinatra'
 require './term_master_schedule.rb'
+require 'sinatra/partial'
+
+enable :sessions
 
 get '/' do
     erb :index
@@ -25,7 +28,16 @@ post '/output' do
             @total += 1
         end
     end
+
+    session[:courses] = @courses
+
     #Spreadsheet.create_sheet(@courses)
     erb :output
 end
 
+post '/download' do
+end
+
+get '/download' do
+    redirect to('/')
+end

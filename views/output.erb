@@ -13,3 +13,9 @@
         <% end %>
     <% end %>
 </table>
+
+
+<form action="download" method="post">
+    <input type="hidden" name="courses" value="<%= @courses.to_s.tr('"',"'") %>">
+    <input type="submit" class="btn">
+</form>
