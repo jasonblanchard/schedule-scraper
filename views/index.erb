@@ -3,7 +3,7 @@
     <% 4.times do |n| %>
         Program Name: <input type="text" class="input-small" placeholder="i.e. EDUC" name="<%="program_#{n}"%>[program_name]">
         Program URL: <input type="text" placeholder="htt://duapp2.drexel.edu/..." name="<%="program_#{n}"%>[program_uri]">
-        Add Section Filter: <input type="text" class="input-small" placeholder="96" name="<%="program_#{n}"%>[sections]">
+        <a href="#" rel="tooltip" title="first tooltip">Add Section Filter:</a> <input type="text" class="input-small" placeholder="96" name="<%="program_#{n}"%>[sections]">
         Add Keyword Filter: <input type="text" class="input-small" placeholder="i.e. math" name="<%="program_#{n}"%>[keyword]">
         <hr>
         <br />
