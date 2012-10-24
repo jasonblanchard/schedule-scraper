@@ -20,11 +20,11 @@ post '/output' do
         end
     end
     
-        @courses.each do |courses|
-            courses.each do |program|
-                @total += 1
-            end
+    @courses.each do |courses|
+        courses.each do |program|
+            @total += 1
         end
+    end
     #Spreadsheet.create_sheet(@courses)
     erb :output
 end
