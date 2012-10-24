@@ -11,6 +11,7 @@ end
 
 post '/output' do
     @courses = []
+    @total = 0
 
     params.each do |k,program|
         p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
@@ -18,7 +19,12 @@ post '/output' do
             @courses << p.grab_courses(program["sections"],program["keyword"])
         end
     end
-    @courses
+    
+        @courses.each do |courses|
+            courses.each do |program|
+                @total += 1
+            end
+        end
     #Spreadsheet.create_sheet(@courses)
     erb :output
 end
