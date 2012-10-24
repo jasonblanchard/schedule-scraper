@@ -3,8 +3,24 @@
     margin: auto;
 }
 
+.main-content {
+    padding-top: 100px;
+}
+
 .header {
     margin-bottom: 30px;
+}
+
+.title {
+    width: 400px;
+    float: left;
+}
+
+.info {
+    width: 400px;
+    float: right;
+    text-align: right;
+    margin-top: 10px;
 }
 
 form {
@@ -14,5 +30,7 @@ form {
 
 table.courses {
     margin-top: 10px;
+    font-size: small;
 }
+
 
