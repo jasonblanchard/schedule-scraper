@@ -5,6 +5,9 @@ require './saved_searches.rb'
 enable :sessions
 
 get '/' do
+    
+    @saved_searches = $saved_searches
+
     erb :index
 end
 

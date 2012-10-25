@@ -13,6 +13,13 @@
     <input type="text" placeholder="Saved search name" name="save_name">
 </form>
 
+<h2>Saved Searches</h2>
+<ul class="unstyled">
+    <% @saved_searches.each do |name,params| %>
+        <li><%= name %></li>
+    <% end %>
+</ul>
+
 <script type="text/javascript">
   $(document).ready(function () {
     $("[rel=tooltip]").tooltip();
