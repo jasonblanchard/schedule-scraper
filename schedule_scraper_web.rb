@@ -31,12 +31,6 @@ post '/output' do
             @courses << p.grab_courses(program["sections"],program["keyword"])
         end
     end
-    programs.each do |k,program|
-        p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
-        if p 
-            @courses << p.grab_courses(program["sections"],program["keyword"])
-        end
-    end
     
     @courses.each do |courses|
         courses.each do |program|
