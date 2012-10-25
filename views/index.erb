@@ -1,28 +1,32 @@
 <p class="lead"><a href="https://duapp2.drexel.edu/webtms_du/app?page=Home&service=page" target="_blank">Grab program pages</a> and enter the info:</p>
-<form action="output" method="post" class="form-inline">
-    <% 6.times do |n| %>
-        <br />
-        Program Name: <input type="text" class="input-small" placeholder="i.e. EDUC" name="programs[<%="program_#{n}"%>][program_name]">
-        Program URL: <input type="text" placeholder="htt://duapp2.drexel.edu/..." name="programs[<%="program_#{n}"%>][program_uri]">
-        <a href="#" rel="tooltip" title="Put '96' for all 900 and 600 courses. Leave blank for all sections.">Sections:</a> <input type="text" class="input-small"  name="programs[<%="program_#{n}"%>][sections]">
-        Keyword: <input type="text" class="input-small" placeholder="i.e. math" name="programs[<%="program_#{n}"%>][keyword]">
-        <hr>
-    <% end %>
-    <input type="submit" class="btn btn-primary">
-    <input type="checkbox" name="save" value="1"> Save this search?</input>
-    <input type="text" placeholder="Saved search name" name="save_name">
-</form>
-
-<h2>Saved Searches</h2>
-<form action="output" method="post" class="form-inline">
-    <ul class="unstyled">
-        <% @saved_searches.each do |name,params| %>
-            <li><input type="radio" name="name" value="<%= "#{name}" %>"> <%= name %></li>
+<div class="program-form">
+    <form action="output" method="post" class="form-inline">
+        <% 6.times do |n| %>
+            <br />
+            Name: <input type="text" class="input-small" placeholder="i.e. EDUC" name="programs[<%="program_#{n}"%>][program_name]">
+            URL: <input type="text" placeholder="htt://duapp2.drexel.edu/..." name="programs[<%="program_#{n}"%>][program_uri]">
+            <a href="#" rel="tooltip" title="Put '96' for all 900 and 600 courses. Leave blank for all sections.">Sections:</a> <input type="text" class="input-mini"  name="programs[<%="program_#{n}"%>][sections]">
+            Keyword: <input type="text" class="input-small" placeholder="i.e. math" name="programs[<%="program_#{n}"%>][keyword]">
+            <hr>
         <% end %>
-    </ul>
-    <input type="hidden" name="use_saved_values" value="1">
-    <input type="submit" class="btn">
-</form>
+        <input type="submit" value="Grab Courses" class="btn btn-primary">
+        <input type="checkbox" name="save" value="1"> Save this search?</input>
+        <input type="text" placeholder="Saved search name" name="save_name">
+    </form>
+</div>
+
+<div class="saved-searches">
+    <h2>Saved Searches</h2>
+    <form action="output" method="post" class="form-inline">
+        <ul class="unstyled">
+            <% @saved_searches.each do |name,params| %>
+                <li><input type="radio" name="name" value="<%= "#{name}" %>"> <%= name %></li>
+            <% end %>
+        </ul>
+        <input type="hidden" name="use_saved_values" value="1">
+        <input type="submit" value="View Saved Search" class="btn">
+    </form>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function () {

@@ -23,14 +23,20 @@
     margin-top: 10px;
 }
 
-form {
-    width: 75%;
-    margin: auto;
+.program-form {
+    width: 70%;
+    float: left;
 }
 
 table.courses {
     margin-top: 10px;
     font-size: small;
+}
+
+.saved-searches {
+    width: 10%;
+    float: left;
+    padding-left: 50px;
 }
 
 #stats {
