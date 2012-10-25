@@ -30,7 +30,7 @@ post '/output' do
 
     @timestamp = Time.new.to_i
 
-    Spreadsheet.create_sheet(@courses, @timestamp)
+    Spreadsheet.create_sheet(@courses, @timestamp) unless @courses.empty?
     erb :output
 end
 
