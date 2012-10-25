@@ -18,12 +18,21 @@ end
 post '/output' do
     @courses = []
     @total = 0
-    @saved = $saved_searches
 
-    params["programs"].each do |k,program|
-        p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
-        if p 
-            @courses << p.grab_courses(program["sections"],program["keyword"])
+    if params[:use_saved_values]
+        programs = @saved = $saved_searches[params[:name]]
+        programs.each do |k, program|
+            p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
+            if p 
+                @courses << p.grab_courses(program["sections"],program["keyword"])
+            end
+        end
+    else
+        params["programs"].each do |k,program|
+            p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
+            if p 
+                @courses << p.grab_courses(program["sections"],program["keyword"])
+            end
         end
     end
     
