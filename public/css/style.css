@@ -33,4 +33,17 @@ table.courses {
     font-size: small;
 }
 
+#stats {
+    width: 150px;
+    float: left;
+}
+
+a#download-button {
+    float: right;
+}
+
+.top-bar {
+    height: 30px;
+    margin-top: 20px;
+}
 

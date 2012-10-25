@@ -113,8 +113,8 @@ class Program
 end
 
 class Spreadsheet
-    def self.create_sheet(term)
-        SimpleXlsx::Serializer.new("test.xlsx") do |doc|
+    def self.create_sheet(term, name)
+        SimpleXlsx::Serializer.new("public/files/#{name}.xlsx") do |doc|
             doc.add_sheet("course") do |sheet|
                 term.each do |program|
                     program.each do |course|
@@ -126,25 +126,3 @@ class Spreadsheet
     end
 
 end
-
-# Examples and tests
-
-=begin
-all = []
-
-ct = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=SG&sp=SCT&sp=12")
-
-all << ct.grab_courses(69)
-
-edlt = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEDLT&sp=10")
-
-all << edlt.grab_courses
-
-hrd = Program.new("https://duapp2.drexel.edu/webtms_du/app?component=subjectDetails&page=CollegesSubjects&service=direct&sp=ZH4sIAAAAAAAAAFvzloG1uIhBPjWlVC%2BlKLUiNUcvs6hErzw1qSS3WC8lsSRRLyS1KJcBAhiZGJh9GNgTk0tCMnNTSxhEfLISyxL1iwtz9EECxSWJuQXWPgwcJUAtzvkpQBVCEBU5iXnp%2BsElRZl56TB5l9Ti5EKGOgamioKCEgY2IwNDIyNToJHhmXlAaYXA0sQiEG1opGtoDACLMly%2FpgAAAA%3D%3D&sp=ST&sp=SEHRD&sp=10")
-
-all << hrd.grab_courses(69)
-
-
-Spreadsheet.create_sheet(all)
-
-=end

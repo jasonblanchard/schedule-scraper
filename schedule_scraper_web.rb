@@ -29,9 +29,9 @@ post '/output' do
         end
     end
 
-    session[:courses] = @courses
+    @timestamp = Time.new.to_i
 
-    #Spreadsheet.create_sheet(@courses)
+    Spreadsheet.create_sheet(@courses, @timestamp)
     erb :output
 end
 

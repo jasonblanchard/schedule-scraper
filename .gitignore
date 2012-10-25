@@ -1,4 +1,5 @@
 *.swp
 test.rb
 *.xlsx
-files/*
+public/files/*
+!public/files/.gitignore

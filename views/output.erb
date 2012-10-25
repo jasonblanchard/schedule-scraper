@@ -1,5 +1,12 @@
-<span class="label label-info">Stats:</span>
- <%= @total %> courses
+
+<div class="top-bar">
+    <div id="stats">
+        <span class="label label-info">Stats:</span>
+        <%= @total %> courses
+    </div>
+    <a class="btn btn-success" id="download-button" href="files/<%= "#{@timestamp}.xlsx" %>">Download</a>
+</div>
+
 
 <table class="courses table table-striped table-bordered">
     
@@ -15,7 +22,3 @@
 </table>
 
 
-<form action="download" method="post">
-    <input type="hidden" name="courses" value="<%= @courses.to_s.tr('"',"'") %>">
-    <input type="submit" class="btn">
-</form>
