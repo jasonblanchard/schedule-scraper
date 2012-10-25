@@ -1,3 +1,4 @@
 *.swp
 test.rb
 *.xlsx
+files/*
