@@ -36,7 +36,7 @@ post '/output' do
    
     
     if params["save"]
-        $saved_searches["test"] = params
+        $saved_searches[params[:save_name]] = params[:programs]
         file = File.new("./saved_searches.rb", "w")
         file.syswrite("$saved_searches = #{$saved_searches}")
     end
