@@ -1,6 +1,5 @@
 require 'sinatra'
 require './term_master_schedule.rb'
-require 'sinatra/partial'
 
 enable :sessions
 
