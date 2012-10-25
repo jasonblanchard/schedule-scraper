@@ -14,11 +14,14 @@
 </form>
 
 <h2>Saved Searches</h2>
-<ul class="unstyled">
-    <% @saved_searches.each do |name,params| %>
-        <li><%= name %></li>
-    <% end %>
-</ul>
+<form action="output" method="post" class="form-inline">
+    <ul class="unstyled">
+        <% @saved_searches.each do |name,params| %>
+            <li><input type="radio" name="<%= "${name}" %>"> <%= name %></li>
+        <% end %>
+    </ul>
+    <input type="submit" class="btn">
+</form>
 
 <script type="text/javascript">
   $(document).ready(function () {
