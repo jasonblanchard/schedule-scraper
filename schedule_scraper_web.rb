@@ -1,5 +1,6 @@
 require 'sinatra'
 require './term_master_schedule.rb'
+require './saved_searches.rb'
 
 enable :sessions
 
@@ -14,8 +15,9 @@ end
 post '/output' do
     @courses = []
     @total = 0
+    @saved = $saved_searches
 
-    params.each do |k,program|
+    params["programs"].each do |k,program|
         p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
         if p 
             @courses << p.grab_courses(program["sections"],program["keyword"])
@@ -31,7 +33,16 @@ post '/output' do
     @timestamp = Time.new.to_i
 
     Spreadsheet.create_sheet(@courses, @timestamp) unless @courses.empty?
+   
+    
+    if params["save"]
+        $saved_searches["test"] = params
+        file = File.new("./saved_searches.rb", "w")
+        file.syswrite("$saved_searches = #{$saved_searches}")
+    end
+
     erb :output
+    
 end
 
 post '/download' do
