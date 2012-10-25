@@ -20,19 +20,21 @@ post '/output' do
     @total = 0
 
     if params[:use_saved_values]
-        programs = @saved = $saved_searches[params[:name]]
-        programs.each do |k, program|
-            p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
-            if p 
-                @courses << p.grab_courses(program["sections"],program["keyword"])
-            end
-        end
+        programs = $saved_searches[params[:name]]
     else
-        params["programs"].each do |k,program|
-            p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
-            if p 
-                @courses << p.grab_courses(program["sections"],program["keyword"])
-            end
+        programs = params["programs"]
+    end
+
+    programs.each do |k, program|
+        p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
+        if p 
+            @courses << p.grab_courses(program["sections"],program["keyword"])
+        end
+    end
+    programs.each do |k,program|
+        p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
+        if p 
+            @courses << p.grab_courses(program["sections"],program["keyword"])
         end
     end
     
