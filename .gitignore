@@ -3,4 +3,3 @@ test.rb
 *.xlsx
 public/files/*
 !public/files/.gitignore
-saved_searches.rb
