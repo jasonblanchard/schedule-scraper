@@ -20,12 +20,17 @@
     <h2>Saved Searches</h2>
     <form action="output" method="post" class="form-inline">
         <ul class="unstyled">
-            <% @saved_searches.each do |name,params| %>
-                <li><input type="radio" name="name" value="<%= "#{name}" %>"> <%= name %></li>
+            <% if @saved_searches %>
+                <% @saved_searches.each do |name,params| %>
+                    <li><input type="radio" name="name" value="<%= "#{name}" %>"> <%= name %></li>
+                <% end %>
+            </ul>
+            <input type="hidden" name="use_saved_values" value="1">
+            <input type="submit" value="View Saved Search" class="btn">
+
+            <% else %>
+                No saved searches yet
             <% end %>
-        </ul>
-        <input type="hidden" name="use_saved_values" value="1">
-        <input type="submit" value="View Saved Search" class="btn">
     </form>
 </div>
 
