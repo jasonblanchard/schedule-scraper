@@ -22,7 +22,7 @@
         <ul class="unstyled">
             <% if @saved_searches %>
                 <% @saved_searches.each do |name,params| %>
-                    <li><input type="radio" name="name" value="<%= "#{name}" %>"> <%= name %></li>
+                    <li><input type="radio" name="name" value="<%= "#{name}" %>"> <%= escape_html(name) %></li>
                 <% end %>
             </ul>
             <input type="hidden" name="use_saved_values" value="1">
