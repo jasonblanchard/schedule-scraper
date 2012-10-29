@@ -1,8 +1,11 @@
 require 'sinatra'
 require './term_master_schedule.rb'
 require './saved_searches.rb'
+require 'rack-flash'
 
 enable :sessions
+use Rack::Flash
+
 
 get '/' do
     
@@ -14,6 +17,7 @@ end
 post '/' do
     
     $saved_searches.delete(params[:delete_saved_search])
+    flash[:notice] = "#{params[:delete_saved_search]} was deleted"
 
     @saved_searches = $saved_searches
     
@@ -82,6 +86,8 @@ post '/admin' do
         next if file == '.' or file == '..'
             File.delete("public/files/#{file}")
         end
+
+        flash[:notice] = "All excel sheets destroyed"
 
     erb :admin
 end
