@@ -53,3 +53,6 @@ a#download-button {
     margin-top: 20px;
 }
 
+form.delete-saved-search .btn {
+    float: right;
+}
