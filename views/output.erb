@@ -20,3 +20,10 @@
         <% end %>
     <% end %>
 </table>
+
+<% if params[:use_saved_values] %>
+    <form action="/" method="post" class="form-inline">
+        <input type="hidden" name="delete_saved_search" value="<%= params[:name] %>">
+        <input type="submit" class="btn" value="Delete saved search">
+    </form>
+<% end %>

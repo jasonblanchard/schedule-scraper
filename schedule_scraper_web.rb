@@ -11,6 +11,15 @@ get '/' do
     erb :index
 end
 
+post '/' do
+    
+    $saved_searches.delete(params[:delete_saved_search])
+
+    @saved_searches = $saved_searches
+    
+    erb :index
+end
+
 get '/output' do
     redirect to('/')
 end
