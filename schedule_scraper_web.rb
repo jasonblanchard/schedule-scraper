@@ -83,7 +83,7 @@ end
 post '/admin' do
 
     Dir.foreach('public/files') do |file|
-        next if file == '.' or file == '..'
+        next if file == '.' or file == '..' or file == '.gitignore'
             File.delete("public/files/#{file}")
         end
 
