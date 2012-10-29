@@ -71,3 +71,18 @@ end
 get '/download' do
     redirect to('/')
 end
+
+get '/admin' do
+    erb :admin
+end
+
+post '/admin' do
+
+    Dir.foreach('public/files') do |file|
+        next if file == '.' or file == '..'
+            File.delete("public/files/#{file}")
+        end
+
+    erb :admin
+end
+
