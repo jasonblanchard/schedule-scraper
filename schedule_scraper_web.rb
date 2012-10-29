@@ -17,7 +17,7 @@ end
 post '/' do
     
     $saved_searches.delete(params[:delete_saved_search])
-    flash[:notice] = "#{params[:delete_saved_search]} was deleted"
+    flash.now[:notice] = "#{params[:delete_saved_search]} was deleted"
 
     @saved_searches = $saved_searches
     
@@ -87,7 +87,7 @@ post '/admin' do
             File.delete("public/files/#{file}")
         end
 
-        flash[:notice] = "All excel sheets destroyed"
+        flash.now[:notice] = "All excel sheets destroyed"
 
     erb :admin
 end
