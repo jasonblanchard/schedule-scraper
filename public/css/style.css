@@ -53,3 +53,11 @@ a#download-button {
     margin-top: 20px;
 }
 
+form.delete-saved-search .btn {
+    float: right;
+}
+
+.alert {
+    width: 30%;;
+    margin: auto;
+}
