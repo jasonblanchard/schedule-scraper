@@ -17,9 +17,8 @@
 }
 
 .info {
-    width: 400px;
+    width: 175px;
     float: right;
-    text-align: right;
     margin-top: 10px;
 }
 
@@ -59,5 +58,10 @@ form.delete-saved-search .btn {
 
 .alert {
     width: 30%;;
+    margin: auto;
+}
+
+.demo-video {
+    width: 500px;
     margin: auto;
 }
