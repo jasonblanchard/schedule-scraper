@@ -10,6 +10,19 @@
     </head>
     <body>
 
+        <div id="demo" class="modal hide fade" role="dialog" data-keyboard="true" tabindex="-1" aria-labelledby="demoLabel" aria-hidde="true">
+            <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                 <h3>How does it work?</h3>
+             </div>
+             <div class="modal-body">
+                 <p>A script runs behind the scenes that follows the link to the schedule page, reads the page, and returns it as a structured document. Each time you grab courses or view a saved search, it recalculates the courses and returns updated course data.</p>
+             </div>
+             <div class="modal-footer">
+                 <button class="btn" data-dismiss="modal" aria-hidden="true">Got it</button>
+             </div>
+         </div>
+
         <% if flash[:notice] %>
             <div class="alert alert-success notice">
                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -22,8 +35,11 @@
                 <h1><a href="/">Schedule Scraper</a></h1>
             </div>
             <div class="info">
-                <a href="https://github.com/jasonblanchard/schedule-scraper" target="_blank">Fork me on github</a> <i class="icon-random"></i> <br /> 
-                <a href="https://github.com/jasonblanchard/schedule-scraper/issues" target="_blank">Oops! I found a bug</a> <i class="icon-comment"></i>
+                <ul class="unstyled">
+                    <li><a href="#demo" role="button" data-toggle="modal">How does it work? </a><i class="icon-info-sign"></i><br /></li>
+                    <li><a href="https://github.com/jasonblanchard/schedule-scraper" target="_blank">Fork me on github</a> <i class="icon-random"></i> <br /> </li>
+                    <li><a href="https://github.com/jasonblanchard/schedule-scraper/issues" target="_blank">Oops! I found a bug</a> <i class="icon-comment"></i></li>
+                </ul>
             </div>
         </div>
 
