@@ -20,6 +20,9 @@ class ScheduleScraper
         flash.now[:notice] = "#{params[:delete_saved_search]} was deleted"
 
         @saved_searches = $saved_searches
+
+        file = File.new("./saved_searches.rb", "w")
+        file.syswrite("$saved_searches = #{$saved_searches}")
         
         erb :index
     end
