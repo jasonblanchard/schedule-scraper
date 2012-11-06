@@ -2,7 +2,10 @@
 <div class="top-bar">
     <div id="stats">
         <span class="label label-info">Stats:</span>
-        <%= @total %> courses
+        <%= @total %> courses in
+        <% @programs.each do |program| %>
+            <%= program %>
+        <% end %>
     </div>
     <a class="btn btn-success" id="download-button" href="files/<%= "#{@timestamp}.xlsx" %>">Download</a>
 </div>
@@ -26,4 +29,9 @@
         <input type="hidden" name="delete_saved_search" value="<%= params[:name] %>">
         <input type="submit" class="btn btn-danger" value="Delete saved search">
     </form>
+<% end %>
+
+
+<% @urls.each do |url| %>
+    <%= url %>
 <% end %>
