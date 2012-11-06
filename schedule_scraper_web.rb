@@ -63,6 +63,8 @@ class ScheduleScraper
 
         @timestamp = Time.new.to_i
 
+        @programs_with_url = Hash[@programs.zip @urls]
+
         Spreadsheet.create_sheet(@courses, @timestamp) unless @courses.empty?
        
         
