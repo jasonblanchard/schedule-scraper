@@ -2,9 +2,9 @@
 <div class="top-bar">
     <div id="stats">
         <span class="label label-info">Stats:</span>
-        <%= @total %> courses in
-        <% @programs.each do |program| %>
-            <%= program %>
+        <b><%= @total %></b> courses selected from
+        <% @programs_with_url.each do |program,url| %>
+            <b><a href="<%= url %>" target="_blank"><%= program %></a></b>
         <% end %>
     </div>
     <a class="btn btn-success" id="download-button" href="files/<%= "#{@timestamp}.xlsx" %>">Download</a>
@@ -32,6 +32,3 @@
 <% end %>
 
 
-<% @urls.each do |url| %>
-    <%= url %>
-<% end %>
