@@ -49,8 +49,8 @@ class ScheduleScraper
                 p = Program.new(program["program_uri"]) unless program["program_uri"].empty?
                 if p 
                     @courses << p.grab_courses(program["sections"],program["keyword"])
-                    @programs << program[:program_name]
-                    @urls << program[:program_uri]
+                    @programs << program["program_name"]
+                    @urls << program["program_uri"]
                 end
             end
         end
